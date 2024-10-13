@@ -1,5 +1,6 @@
 'use client';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 const ConnectTwitter = () => {
   console.log('ConnectTwitter');
     const { data: session } = useSession();
@@ -13,6 +14,9 @@ const ConnectTwitter = () => {
         signIn('twitter');
       }
     }
+    useEffect(() => {
+      console.log('useSession 状态 >>', session);
+  }, [session]);
     return (
         <div>
             <button onClick={xClick}>
